@@ -2,6 +2,7 @@ package com.example.controllers;
 
 import com.example.service.CalculateSimple;
 import com.example.model.OperationModel;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -9,12 +10,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class CalculatorController {
 
-    OperationModel operationModel = new OperationModel();
+    private final OperationModel operationModel;
 
     private final CalculateSimple calculateSimple;
 
-    public CalculatorController(CalculateSimple calculateSimple) {
+    public CalculatorController(CalculateSimple calculateSimple, OperationModel operationModel) {
         this.calculateSimple = calculateSimple;
+        this.operationModel = operationModel;
     }
 
     @RequestMapping("/calculator")
